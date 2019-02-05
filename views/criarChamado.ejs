@@ -2,7 +2,7 @@
 <html lang="pt-br">
     <%- include('static/header') %>
     <body>
-        <div class="container-fluid pt-4">
+        <div class="container-fluid pt-4" id="app">
 
             <div class="row mx-auto d-flex align-itens-center">
                 <a href="/" class="btn btn-primary col-4">
@@ -10,14 +10,14 @@
                     Voltar
                 </a>
                 <div class="col">
-                    <h5> Cadastrar Chamado</h5>
+                    <h5> Cadastrar Chamado {{message}}</h5>
                 </div>
             </div>
 
             <form class="mt-3" action="cadastrar.php" method="POST">
                 <div class="form-group">
                     <label for="">SSM:</label>
-                    <select class="form-control" name="ssm" id="ssm" onchange="ajax()" required>
+                    <select class="form-control" name="ssm" id="ssm" @change="fetchOcorrencia()" required>
                         <option value="" selected disabled>Selecione uma opção</option>
                         <option value="1">Manutenção corretiva</option>
                         <option value="2">Meio Ambiente</option>
@@ -84,6 +84,19 @@
             </form>
         </div>
 
-        
+        <script type="text/javascript">
+            new Vue({
+                el: '#app',
+                data: {
+                    message: 'Olá Vue.js!'
+                },
+                methods : {
+                    fetchOcorrencia(){
+                        console.log(1);
+                    }
+                }
+            })
+
+        </script>
     </body>
 </html>
