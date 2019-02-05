@@ -10,4 +10,8 @@ router.get('/chamados', (req,res,next) => {
   res.render('criarChamado', {title : 'Criar Chamado'});
 });
 
+router.get("/consultarChamados", (req,res,next) => {
+  res.render("consultarChamados",{title : 'Consultar Chamados'});
+})
+
 module.exports = router;
