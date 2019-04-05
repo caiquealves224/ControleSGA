@@ -3,6 +3,7 @@ var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
+const session = require('express-session');
 
 
 var indexRouter = require('./routes/index');
@@ -20,7 +21,17 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(express.static(path.join(__dirname, '/node_modules/bootstrap/dist/')));
 
-app.use('/', indexRouter);
+// const authenticate = (req,res,next) => {
+//   console.log(req)
+//   if (req.session.user) {
+//     next();
+//   } else {
+//     req.session.error = 'Access denied!';
+//     res.redirect('/login');
+//   }
+// }
+
+app.use('/',indexRouter);
 app.use('/users', usersRouter);
 
 // catch 404 and forward to error handler
