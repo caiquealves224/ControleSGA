@@ -20,6 +20,16 @@ router.get("/consultarChamados", (req,res,next) => {
 
 router.get("/relatorios", (req,res,next) => {
   res.render("relatorios",{title : 'relatorios'});
+});
+
+router.get("/ocorrencias",(req,res,next) => {
+
+  let itens = { itens: [
+    {id: 1, mensagem : "qualquer coisa"},
+    {id: 2, mensagem : "dois"}
+  ]}
+
+  res.json(itens);
 })
 
 
