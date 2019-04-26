@@ -29,7 +29,7 @@
                 <div class="form-group border-bottom">
                     <label for="">Ocorrência</label>
                     <select class="form-control" name="ocorrencia" id="ocorrencia" required>
-                        <option v-for="ocorrencia in ocorrenciaItens" :value="ocorrencia.id"> {{ ocorrencia.msg }} </option>
+                        <option v-for="ocorrencia in ocorrenciaItens" :value="ocorrencia.id"> {{ ocorrencia.mensagem }} </option>
                     </select>
                 </div>
 
@@ -85,20 +85,22 @@
         </div>
 
         <script type="text/javascript">
-            new Vue({
+            let app = new Vue({
                 el: '#app',
                 data: {
                     message: 'Olá Vue.js!',
+                    baseUrl: <%= baseUrl %> ,
                     ocorrenciaItens : []
                 },
                 methods : {
-                    fetchOcorrencia(){
-                        fetch("http://localhost:3000/ocorrencias")
+                    fetchOcorrencia(id){
+                        fetch("http://localhost:3000/ocorrencias/" + id)
+                        .then(data => data.json())
                         .then(this.popularSelect)
                         .catch(this.popularSelectError);
                     },
                     popularSelect(data){
-                        console.log(data.body);
+                        this.ocorrenciaItens = data.itens;
                     },
                     popularSelectError(error){
                         console.log("deu ruim nego", error);

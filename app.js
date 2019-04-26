@@ -20,17 +20,6 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(express.static(path.join(__dirname, '/node_modules/bootstrap/dist/')));
-
-// const authenticate = (req,res,next) => {
-//   console.log(req)
-//   if (req.session.user) {
-//     next();
-//   } else {
-//     req.session.error = 'Access denied!';
-//     res.redirect('/login');
-//   }
-// }
-
 app.use('/',indexRouter);
 app.use('/users', usersRouter);
 
