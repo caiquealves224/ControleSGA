@@ -5,6 +5,8 @@ var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 const session = require('express-session');
 
+const db = require('./db');
+
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
@@ -38,5 +40,11 @@ app.use(function(err, req, res, next) {
   res.status(err.status || 500);
   res.render('error');
 });
+
+
+db.connection.ping(function (err) {
+  if (err) throw err;
+  console.log('Database Server responded to ping');
+})
 
 module.exports = app;

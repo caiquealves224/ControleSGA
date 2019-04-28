@@ -1,5 +1,6 @@
 var express = require('express');
 var router = express.Router();
+const db = require("../db");
 
 
 router.get('/', function(req, res, next) {
@@ -19,8 +20,6 @@ router.get("/relatorios", (req,res,next) => {
 });
 
 router.get("/ocorrencias",(req,res,next) => {
-
-  const controler = require("../");
   
   let itens = { itens: [
     {id: 1, mensagem : "qualquer coisa"},
