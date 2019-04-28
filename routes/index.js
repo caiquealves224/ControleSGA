@@ -20,6 +20,8 @@ router.get("/relatorios", (req,res,next) => {
 
 router.get("/ocorrencias",(req,res,next) => {
 
+  const controler = require("../");
+  
   let itens = { itens: [
     {id: 1, mensagem : "qualquer coisa"},
     {id: 2, mensagem : "dois"}

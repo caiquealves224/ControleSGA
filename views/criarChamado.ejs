@@ -17,7 +17,7 @@
             <form class="mt-3" action="cadastrar.php" method="POST">
                 <div class="form-group">
                     <label for="">SSM:</label>
-                    <select class="form-control" name="ssm" id="ssm" @change="fetchOcorrencia()" required>
+                    <select class="form-control" name="ssm" id="ssm" @change="fetchOcorrencia" required>
                         <option value="" selected disabled>Selecione uma opção</option>
                         <option value="1">Manutenção corretiva</option>
                         <option value="2">Meio Ambiente</option>
@@ -89,12 +89,11 @@
                 el: '#app',
                 data: {
                     message: 'Olá Vue.js!',
-                    baseUrl: <%= baseUrl %> ,
                     ocorrenciaItens : []
                 },
                 methods : {
-                    fetchOcorrencia(id){
-                        fetch("http://localhost:3000/ocorrencias/" + id)
+                    fetchOcorrencia(event){
+                        fetch("http://localhost:3000/ocorrencias/" + event.target.value)
                         .then(data => data.json())
                         .then(this.popularSelect)
                         .catch(this.popularSelectError);
@@ -103,7 +102,9 @@
                         this.ocorrenciaItens = data.itens;
                     },
                     popularSelectError(error){
-                        console.log("deu ruim nego", error);
+
+                        this.ocorrenciaItens = [{id : "" , mensagem : "Erro, por favor tentar novamente"}]
+                        console.error(`Erro na solicitação ajax : \n ${error}`);
                     }
                 }
             })
