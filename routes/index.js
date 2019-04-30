@@ -19,14 +19,20 @@ router.get("/relatorios", (req,res,next) => {
   res.render("relatorios",{title : 'relatorios'});
 });
 
-router.get("/ocorrencias",(req,res,next) => {
-  
-  let itens = { itens: [
-    {id: 1, mensagem : "qualquer coisa"},
-    {id: 2, mensagem : "dois"}
-  ]}
+router.get("/ocorrencias/:id",(req,res,next) => {
+  const ocorrencias = require("../models/ocorrencias.js");
 
-  res.json(itens);
+  ocorrencias.find(req.params.id)
+  .then((data) => {res.json(data);})
+  .catch((error) => console.log(error))
+
+  
+  // let itens = { itens: [
+  //   {id: 1, mensagem : "qualquer coisa"},
+  //   {id: 2, mensagem : "dois"}
+  // ]}
+
+  
 })
 
 

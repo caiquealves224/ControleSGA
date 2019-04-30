@@ -41,9 +41,11 @@ app.use(function(err, req, res, next) {
   res.render('error');
 });
 
-
 db.connection.ping(function (err) {
-  if (err) throw err;
+  if (err) {
+    console.error("failed connect to database") ;
+    if(app.get("env") === "development") throw err; 
+  }
   console.log('Database Server responded to ping');
 })
 
