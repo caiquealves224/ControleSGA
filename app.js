@@ -1,3 +1,5 @@
+require('dotenv').config();
+
 var createError = require('http-errors');
 var express = require('express');
 var path = require('path');
@@ -5,8 +7,8 @@ var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 const session = require('express-session');
 
-const db = require('./db');
 
+const db = require('./db');
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
@@ -44,7 +46,7 @@ app.use(function(err, req, res, next) {
 db.connection.ping(function (err) {
   if (err) {
     console.error("failed connect to database") ;
-    if(app.get("env") === "development") throw err; 
+    if(process.env.DEBUG) throw err; 
   }
   console.log('Database Server responded to ping');
 })
