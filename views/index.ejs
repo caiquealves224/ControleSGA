@@ -10,6 +10,15 @@
             </div>
         </div>
 
+        <% if (os) { %>
+        
+          <div class="row mt-4" >
+            <div class="mx-auto alert alert-success" role="alert">
+                <span >Ordem de serviço <b>N°<%= os %> </b>Cadastrado com sucesso</span>
+            </div>
+          </div>
+        <% } %>
+
         <div class="mt-4">
             <a href="chamados" class="btn btn-lg btn-primary my-2 col">Criar Chamado</a>
             <a href="consultarChamados" class="btn btn-lg btn-primary my-2 col">Chamados Pendentes</a>

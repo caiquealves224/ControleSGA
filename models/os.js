@@ -2,7 +2,7 @@ const db = require("../db");
 
 exports.all = () => {
     return new Promise(function(resolve,reject){
-        db.connection.query("SELECT * FROM ocorrencias", (error,rows) => {
+        db.connection.query("SELECT * FROM ordem_servico", (error,rows) => {
             if (error) reject(error)
             else resolve(rows)
         });

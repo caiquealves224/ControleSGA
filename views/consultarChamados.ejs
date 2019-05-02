@@ -25,48 +25,15 @@
                 </tr>
             </thead>
             <tbody>
-                <tr>
-                    <td><?php echo $linha['id']; ?> </td>
-                    <td><?php echo $linha['ssm']; ?> </td>
-                    <td><?php echo $linha['maquina']; ?> </td>
-                    <td><?php echo $linha['prioridade'];?></td>
-                    <td><button type="button" class="btn btn-info" data-toggle="modal" data-target="#modal<?php echo $linha['id'];?>" ><span data-feather="edit"></span></button></td>	
-                </tr>
-
-                    <div class="modal fade bs-example-modal-lg" tabindex="-1" id="modal<?php echo $linha['id']; ?>" role="dialog" aria-labelledby="myLargeModalLabel">
-                        <div class="modal-dialog modal-lg" role="document">
-                            <div class="modal-content">
-                                <div class="modal-header">
-                                    <h4 class="modal-title" id="myModalLabel"><?php echo $linha['id']; ?></h4>
-                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                                    
-                                </div>
-                                <div class="modal-body">
-                                    <?php
-                                        echo "<p><b>Ordem de Serviço n°</b>" . $linha['id'] . ".<br> <b>Registrado por</b> ". $linha['nome'] ."</p>";
-                                        echo "<hr/>";
-                                        echo "<p><b> Data: </b>" . $linha['data'] ."</p>";
-                                        echo "<p><b> Máquina: </b>" . $linha['maquina'] ."</p>";
-                                        echo "<p><b> Ocorrência : </b>";
-                                        echo $linha['ocorrencia'] . "</p>";
-                                        echo "<hr/>";
-
-                                        echo "<p class=''><b> Prioridade: </b>" . $linha['prioridade'] ."</p>";	 
-                                        echo "<p><b> Descrição: </b>" . $linha['txt'] ."</p>";	 
-                                    ?>
-
-                                </div>
-                                <div class="modal-footer">
-                                    <form method="post" action="finalizar.php">
-                                        <input name="idOs" type='hidden' value="<?php echo $linha['id']?>">
-                                        <input type="submit" class="btn btn-success" value="Finalizar Chamado">
-                                        <button type="button" class="btn btn-default" data-dismiss="modal"><span data-feather="x-circle"></span></button>
-                                    </form>	
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                <?php } ?>
+                <% for(item in itens) { %>
+                    <tr>
+                        <td><%= item.id %> </td>
+                        <td><%= item.ssm %> </td>
+                        <td><%= item.maquina %> </td>
+                        <td><%= item.prioridade%></td>
+                        <td><button type="button" class="btn btn-info" data-toggle="modal" data-target="" ><span data-feather="edit"></span></button></td>	
+                    </tr>
+                <% } %>
             </tbody>
         </table>
 

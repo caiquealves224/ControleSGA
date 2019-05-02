@@ -1,10 +1,12 @@
 var express = require('express');
 var router = express.Router();
-const db = require("../db");
-
 
 router.get('/', function(req, res, next) {
-  res.render('index', { title: 'ControleSGA'});
+
+  let os;
+  if(req.query.os) os = req.query.os ;
+
+  res.render('index', { title: 'ControleSGA', os : os});
 });
 
 router.get('/chamados', (req,res,next) => {
@@ -12,11 +14,10 @@ router.get('/chamados', (req,res,next) => {
 });
 
 router.post('/chamados', (req,res,next) => {
-  const ocorrencias = require("../models/ocorrencias.js");
-  ocorrencias.create(req.body)
-  .then(()=>res.redirect("/"))
+  const ocorrenciaModel = require("../models/ocorrencias.js");
+  ocorrenciaModel.create(req.body)
+  .then((id)=>res.redirect("/?os="+id))
   .catch((error)=>console.log(error))
-  
 });
 
 
@@ -28,6 +29,10 @@ router.get("/consultarChamados", (req,res,next) => {
 router.get("/relatorios", (req,res,next) => {
   res.render("relatorios",{title : 'relatorios'});
 });
+
+router.get("/ocorrencias", (req,res,next)=>{
+  const ocorrenciaModel = require("../models/ocorrencias.js");
+})
 
 router.get("/ocorrencias/:id",(req,res,next) => {
   const ocorrencias = require("../models/ocorrencias.js");
