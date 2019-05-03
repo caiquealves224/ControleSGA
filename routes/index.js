@@ -22,16 +22,17 @@ router.post('/chamados', (req,res,next) => {
 
 
 
-router.get("/consultarChamados", (req,res,next) => {
-  res.render("consultarChamados",{title : 'Consultar Chamados'});
-})
-
 router.get("/relatorios", (req,res,next) => {
   res.render("relatorios",{title : 'relatorios'});
 });
 
-router.get("/ocorrencias", (req,res,next)=>{
-  const ocorrenciaModel = require("../models/ocorrencias.js");
+router.get("/BuscarChamados", (req,res,next)=>{
+  const ocorrenciaModel = require("../models/os.js");
+
+
+  ocorrenciaModel.all()
+  .then((data) => { console.log(typeof(data)); return data })
+  .then((data) => res.render("chamados",{title : 'Consultar Chamados' , data : data}))
 })
 
 router.get("/ocorrencias/:id",(req,res,next) => {
