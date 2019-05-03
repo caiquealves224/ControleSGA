@@ -1,0 +1,43 @@
+<html>
+    <%-include('static/header')%>
+
+    <body>
+        <div class="container-fluid pt-4">
+
+        <div class="row mx-auto d-flex align-itens-center">
+            <a href="/" class="btn btn-primary col-4">
+                <span data-feather="arrow-left"></span>
+                Voltar
+            </a>
+            <div class="col">
+                <h5> Consultar Chamado</h5>
+            </div>
+        </div>
+
+        <table class="table table-responsive mt-3">
+            <thead>
+                <tr>
+                    <th scope="col">N°</th>
+                    <th scope="col">SSM</th>
+                    <th scope="col">Maq.</th>
+                    <th scope="col">Prioridade</th>
+                    <th scope="col">#</th>
+                </tr>
+            </thead>
+            <tbody>
+                <% for(let item of data) { %>
+                    <tr>
+                        <td><%- item.id %> </td>
+                        <td><%- item.ssm %> </td>
+                        <td><%- item.nome %> </td>
+                        <td><%- item.prioridade %></td>
+                        <td><button type="button" class="btn btn-info" data-toggle="modal" data-target="" ><span data-feather="edit"></span></button></td>	
+                    </tr>
+                <% } %>
+            </tbody>
+        </table>
+
+    </div>
+
+    </body>
+</html>
