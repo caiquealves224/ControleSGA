@@ -11,7 +11,7 @@ exports.all = () => {
 
 exports.find = (id) => {
     return new Promise(function(resolve,reject){
-        db.connection.query(`SELECT * FROM ocorrencia where id_ssm = ${id}`, (error,rows) => {
+        db.connection.query(`SELECT * FROM ordem_servico where id = ${id}`, (error,rows) => {
             if (error) reject(error)
             else resolve(rows)
         });
