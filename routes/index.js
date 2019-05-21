@@ -11,7 +11,7 @@ router.get('/', function(req, res, next) {
 });
 
 router.get('/chamados', (req,res,next) => {
-  res.render('criarChamado', {title : 'Criar Chamado'});
+  res.render('chamados/criarChamado', {title : 'Criar Chamado'});
 });
 
 router.post('/chamados', (req,res,next) => {
