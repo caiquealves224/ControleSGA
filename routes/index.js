@@ -10,6 +10,10 @@ router.get('/', function(req, res, next) {
   res.render('index', { title: 'ControleSGA', os : os});
 });
 
+router.get('user', function(req,res){
+  res.render();
+});
+
 router.get('/chamados', (req,res,next) => {
   res.render('chamados/criarChamado', {title : 'Criar Chamado'});
 });
@@ -27,7 +31,9 @@ router.get("/relatorios", (req,res,next) => {
 router.get("/BuscarChamados", (req,res,next)=>{;
   osModel.all()
   .then((data) => { console.log(typeof(data)); return data })
-  .then((data) => res.render("chamados",{title : 'Consultar Chamados' , data : data}))
+  .then((data) => res.render("chamados",{title : 'Consultar Chamados' , data : data}));
+
+  
 })
 
 router.get("/ocorrencias/:id",(req,res,next) => {

@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="pt-br">
 
-<%- include("static/header") %>
+<%- include("../static/header") %>
 
 <body class="">
 	<div class="wrapper">
@@ -11,37 +11,37 @@
 				Tip 1: You can change the color of the sidebar
 				using: data-color="blue | green | orange | red"
 			-->
-			<%- include("static/menuLateral/menuLateral") %>
+			<%- include("../static/menuLateral/menuLateral") %>
 		</div>
 
 		<div class="main-panel">
 
 			<nav class="navbar navbar-expand-lg navbar-absolute navbar-transparent">
-				<%- include("static/navBar/navBar")%>
+				<%- include("../static/navBar/navBar")%>
 			</nav>
 
 			<div class="modal modal-search fade" id="searchModal" tabindex="-1" role="dialog" aria-labelledby="searchModal" aria-hidden="true">
-				<%- include("static/searchModal/searchModal")%>
+				<%- include("../static/searchModal/searchModal")%>
 			</div>
 
 			<!-- Conteudo -->
 			<div class="content">
-				<%- include("index/content")%>
+				<%- include("criarChamado/index") %> 
 			</div>
 
 			<!-- Footer -->
 			<footer class="footer">
-				<%- include("static/footer/footer.ejs")%>
+				<%- include("../static/footer/footer.ejs")%>
 			</footer>
 		</div>
 	</div>
 
 	<div class="fixed-plugin">
-    	<%- include("static/fixed-plugin/fixed-plugin")%>
+    	<%- include("../static/fixed-plugin/fixed-plugin")%>
 	</div>
   
   <!--Scripts-->
-  <%- include("index/scripts")%>
+  <%- include("../index/scripts")%>
 </body>
 
 </html>
